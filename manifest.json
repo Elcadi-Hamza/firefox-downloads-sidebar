@@ -1,0 +1,42 @@
+{
+  "manifest_version": 2,
+  "name": "Downloads Sidebar",
+  "version": "1.0.0",
+  "description": "Shows your Firefox downloads in a sidebar, like the History sidebar.",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "downloads-sidebar@local.test",
+      "strict_min_version": "78.0"
+    }
+  },
+  "permissions": [
+    "downloads",
+    "downloads.open",
+    "theme"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "sidebar_action": {
+    "default_title": "Downloads",
+    "default_panel": "sidebar.html",
+    "default_icon": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    }
+  },
+  "commands": {
+    "toggle-downloads-sidebar": {
+      "suggested_key": {
+        "default": "Ctrl+J"
+      },
+      "description": "Open or close the Downloads sidebar"
+    }
+  }
+}

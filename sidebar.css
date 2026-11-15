@@ -1,0 +1,239 @@
+:root {
+  color-scheme: dark;
+
+  --bg: #1c1b22;
+  --fg: #fbfbfe;
+  --field-bg: #2b2a33;
+  --field-fg: #fbfbfe;
+  --border: rgba(255, 255, 255, 0.15);
+
+  --hover: rgba(255, 255, 255, 0.08);
+  --hover-strong: rgba(255, 255, 255, 0.16);
+  --track: rgba(255, 255, 255, 0.2);
+  --accent: #c69fff;
+  --danger: #ff6a75;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font: message-box;
+}
+
+/* ---- Search ---- */
+
+.toolbar {
+  padding: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+#search {
+  display: block;
+  width: 100%;
+  padding: 4px 6px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--field-bg);
+  color: var(--field-fg);
+  font: inherit;
+}
+
+#search:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: -1px;
+}
+
+/* ---- List ---- */
+
+#list {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.section h2 {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 6px 8px 3px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.section .count {
+  font-weight: normal;
+  opacity: 0.65;
+}
+
+.section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: start;
+  padding: 5px 8px;
+  border-bottom: 1px solid var(--hover);
+}
+
+.item:hover {
+  background: var(--hover);
+}
+
+.ficon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-top: 1px;
+  opacity: 0.8;
+}
+
+.name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.meta {
+  margin-top: 1px;
+  font-size: 0.9em;
+  opacity: 0.7;
+  overflow-wrap: anywhere;
+}
+
+.item.failed .meta {
+  color: var(--danger);
+  opacity: 1;
+}
+
+.bar {
+  height: 3px;
+  margin-top: 4px;
+  background: var(--track);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bar > i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+}
+
+.item.paused .bar > i {
+  background: rgba(128, 128, 128, 0.85);
+}
+
+/* ---- Buttons ---- */
+
+.actions {
+  display: flex;
+  gap: 2px;
+}
+
+.btn {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: inherit;
+  cursor: default;
+}
+
+.btn:hover {
+  background: var(--hover-strong);
+}
+
+.btn:active {
+  background: var(--track);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  background: transparent;
+}
+
+/* ---- SVG icons (file types and buttons) ---- */
+
+svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+svg path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+svg path.f {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* ---- Empty state, notice, footer ---- */
+
+.empty {
+  margin: 0;
+  padding: 16px 8px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.notice,
+.footer {
+  margin: 0;
+  padding: 4px 8px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85em;
+  overflow-wrap: anywhere;
+}
+
+.footer {
+  opacity: 0.75;
+}
+
+.footer.warn {
+  color: var(--danger);
+  opacity: 1;
+}
+
+.notice {
+  color: var(--danger);
+}
