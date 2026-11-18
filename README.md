@@ -29,3 +29,6 @@ Now Ctrl+J opens and closes the sidebar. If it doesn't work, set any other key i
 - Speed and time left are estimates (progress is checked every second).
 - Retry starts a new download from the original URL.
 - Private window downloads show only if the extension is allowed in private windows.
+
+## Extension
+https://addons.mozilla.org/en-US/firefox/addon/better-downloads-sidebar/
